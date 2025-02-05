@@ -9,6 +9,25 @@ exports.deployment = async ({ start } = {}) => {
     const manifest = Manifest.get('/', process.env);
     const server = await Glue.compose(manifest, { relativeTo: __dirname });
 
+    server.route({
+        method: 'GET',
+        path: '/{param*}',
+        handler: {
+            directory: {
+                path: 'public',
+                redirectToSlash: true,
+                index: true
+            }
+        },
+        options: {
+            cors: {
+                origin: ['*'], // Allow all origins
+                headers: ['Authorization', 'Content-Type'], // Allow these headers
+                additionalExposedHeaders: ['Authorization']
+            }
+        }
+    });
+
     if (start) {
         await Exiting.createManager(server).start();
         console.log(['start'], `Server started at ${server.info.uri}`);

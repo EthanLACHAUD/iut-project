@@ -19,13 +19,15 @@ module.exports = {
                         version: Package.version
                     },
                     securityDefinitions: {
-                        'jwt': {
-                            'type': 'apiKey',
-                            'name': 'Authorization',
-                            'in': 'header'
+                        jwt: {
+                            type: 'apiKey',
+                            name: 'Authorization',
+                            in: 'header',
+                            description: 'Enter your JWT token in the format: Bearer [token]'
                         }
                     },
-                    security: [{ 'jwt': [] }]
+                    security: [{ jwt: [] }],
+                    cors: true // Enable CORS for Swagger
                 }
             }
         ]);
