@@ -12,7 +12,8 @@
   "scripts": {
     "start": "node server",
     "test": "lab -a @hapi/code -I \"__core-js_shared__,CSS,regeneratorRuntime,core\" -L",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "consume": "node lib/consumers/csvExportConsumer.js"
   },
   "dependencies": {
     "@hapi/boom": "9.x.x",
@@ -21,6 +22,7 @@
     "@hapipal/schmervice": "^3.0.0",
     "@hapipal/schwifty": "6.x.x",
     "@r6a.05/iut-encrypt": "^1.0.0",
+    "csv-writer": "^1.6.0",
     "exiting": "6.0.1",
     "joi": "17.x.x",
     "mysql": "^2.18.1",
