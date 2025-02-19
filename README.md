@@ -1,9 +1,5 @@
 # Projet IUT
 
-## Description
-
-Ce projet est une application web développée avec Hapi.js, permettant de gérer les utilisateurs et les films. L'application inclut des fonctionnalités telles que l'inscription, la connexion, la gestion des utilisateurs, la gestion des films et la gestion des favoris.
-
 ## Prérequis
 
 - Node.js (version 14 ou supérieure)
@@ -25,12 +21,18 @@ Ce projet est une application web développée avec Hapi.js, permettant de gére
 
 3. Configurez les variables d'environnement en créant un fichier `.env` à la racine du projet avec le contenu suivant :
     ```dotenv
-    MAIL_HOST=smtp.ethereal.email
-    MAIL_PORT=587
-    MAIL_USER=khalid.rosenbaum35@ethereal.email
-    MAIL_PASS=y8Hup4fDZJBAEREaGq
-    MAIL_FROM=khalid.rosenbaum35@ethereal.email
+    MAIL_HOST= # The hostname of the email server (e.g., smtp.example.com)
+    MAIL_PORT= # The port number for the email server (e.g., 587 for TLS, 465 for SSL)
+    MAIL_USER= # The username for authenticating with the email server
+    MAIL_PASS= # The password for authenticating with the email server
+    MAIL_FROM= # The email address that will appear in the 'From' field of the emails
     ```
+   
+## Configuration du docker-compose
+
+   ```bash
+   docker run -d --name hapi-mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=hapi -e MYSQL_DATABASE=user mysql:8.0 --default-authentication-plugin=mysql_native_password
+   ```
 
 ## Exécution des migrations
 
